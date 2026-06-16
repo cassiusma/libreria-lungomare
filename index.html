@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Libreria Lungomare — Libri, Vino & Caffè</title>
-  <meta name="description" content="Una libreria caffè letterario sul lungomare. Libri locali, vini del territorio e caffè specialty." />
+  <title>la libre — Cultura, Vino Naturale & Specialty Coffee a Viareggio</title>
+  <meta name="description" content="La Libre (Libreria Lungomare) è una libreria storica sul lungomare di Viareggio. Vini naturali, specialty coffee e cocktail serali." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -43,20 +43,31 @@
       z-index: 100;
       background: var(--cream);
       border-bottom: 0.5px solid var(--sand);
-      padding: 1rem 2rem;
+      padding: 0.75rem 2rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 1rem;
     }
     .nav-logo {
+      text-decoration: none;
+      white-space: nowrap;
+      line-height: 1.2;
+    }
+    .nav-logo-main {
       font-family: 'Playfair Display', serif;
-      font-size: 20px;
+      font-size: 22px;
       font-weight: 400;
       color: var(--walnut-deep);
       letter-spacing: 0.02em;
-      text-decoration: none;
-      white-space: nowrap;
+      display: block;
+    }
+    .nav-logo-sub {
+      font-size: 10px;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+      font-weight: 300;
+      display: block;
     }
     .nav-links {
       display: flex;
@@ -74,9 +85,7 @@
     }
     .nav-links a:hover { color: var(--walnut-deep); }
     .nav-lang {
-      font-size: 10px;
-      color: var(--text-muted);
-      letter-spacing: 0.07em;
+      font-size: 18px;
       border: 0.5px solid var(--sand);
       padding: 4px 10px;
       border-radius: 5px;
@@ -84,6 +93,7 @@
       background: transparent;
       font-family: 'Inter', sans-serif;
       white-space: nowrap;
+      letter-spacing: 0.1em;
     }
 
     /* ── Hero ── */
@@ -111,7 +121,7 @@
       font-size: 12px;
       letter-spacing: 0.06em;
     }
-    /* swap the div for <img src="hero.jpg" alt="..."> when ready */
+    /* swap the div for <img src="images/hero.jpg" alt="La Libre sul lungomare di Viareggio"> when ready */
     .hero h1 {
       font-family: 'Playfair Display', serif;
       font-size: 38px;
@@ -123,7 +133,7 @@
     .hero p {
       font-size: 15px;
       color: var(--text-mid);
-      max-width: 400px;
+      max-width: 460px;
       line-height: 1.85;
       margin-bottom: 2rem;
     }
@@ -280,9 +290,15 @@
     }
     .footer-logo {
       font-family: 'Playfair Display', serif;
-      font-size: 20px;
+      font-size: 22px;
       color: var(--linen);
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.25rem;
+    }
+    .footer-sub {
+      font-size: 11px;
+      color: var(--wood-mid);
+      letter-spacing: 0.06em;
+      margin-bottom: 0.75rem;
     }
     footer p {
       font-size: 11px;
@@ -293,7 +309,7 @@
 
     /* ── Responsive ── */
     @media (max-width: 640px) {
-      nav { padding: 0.9rem 1.2rem; }
+      nav { padding: 0.75rem 1.2rem; }
       .nav-links { display: none; }
       .hero { padding: 2rem 1.2rem; }
       .hero h1 { font-size: 28px; }
@@ -313,40 +329,42 @@
 
   <!-- NAV -->
   <nav>
-    <a href="#" class="nav-logo">Libreria Lungomare</a>
+    <a href="#" class="nav-logo">
+      <span class="nav-logo-main">La libre</span>
+      <span class="nav-logo-sub">Libreria Lungomare</span>
+    </a>
     <ul class="nav-links">
-      <li><a href="#books">Books</a></li>
-      <li><a href="#wine">Wine</a></li>
-      <li><a href="#coffee">Coffee</a></li>
-      <li><a href="#visit">Visit</a></li>
+      <li><a href="#books" data-it="Libri" data-en="Books">Libri</a></li>
+      <li><a href="#wine" data-it="Vino" data-en="Wine">Vino</a></li>
+      <li><a href="#coffee" data-it="Caffè" data-en="Coffee">Caffè</a></li>
+      <li><a href="#visit" data-it="Vieni" data-en="Visit">Vieni</a></li>
     </ul>
-    <button class="nav-lang">IT / EN</button>
+    <button class="nav-lang" id="lang-toggle" title="Switch language">🇬🇧</button>
   </nav>
 
   <!-- HERO -->
   <section class="hero">
-    <!-- Replace this div with: <img src="images/hero.jpg" alt="Libreria Lungomare sul lungomare"> -->
-    <div class="hero-img">[ hero photo — seafront view ]</div>
-    <h1>Books, Wine &amp; Coffee<br>by the Sea</h1>
-    <p>A literary café on the Lungomare — where local stories, regional wines and specialty coffee meet.</p>
-    <a href="#visit" class="btn">Find us</a>
+    <!-- Replace this div with: <img src="images/hero.jpg" alt="La Libre sul lungomare di Viareggio"> -->
+    <div class="hero-img">[ foto lungomare ]</div>
+    <h1 data-it="Cultura, vino naturale<br>e specialty coffee" data-en="Culture, natural wine<br>and specialty coffee">Cultura, vino naturale<br>e specialty coffee</h1>
+    <p data-it="con aria di mare" data-en="with a sea breeze">con aria di mare</p>
+    <a href="#visit" class="btn" data-it="Vieni a trovarci" data-en="Find us">Vieni a trovarci</a>
   </section>
 
   <!-- ABOUT -->
   <section id="about">
     <div class="section-inner">
-      <div class="eyebrow">Who we are</div>
-      <h2>A place to linger</h2>
+      <div class="eyebrow" data-it="Chi siamo" data-en="Who we are">Chi siamo</div>
+      <h2 data-it="La libreria più viva della Toscana" data-en="The most vibrant bookshop in Tuscany">La libreria più viva della Toscana</h2>
       <div class="divider"></div>
-      <p class="section-body">
-        Placeholder — story of the shop, the philosophy, the love for the coast and its culture.
-        2–3 sentences, warm and personal.
+      <p class="section-body" data-it="La Libre (al secolo Libreria Lungomare) è una libreria storica sul lungomare di Viareggio. Dal 2020 è anche caffè letterario con vini naturali, specialty coffee e cocktail serali. Un ritrovo per chi ama l'aperitivo, il buon caffè e il Carnevale." data-en="La Libre (formally Libreria Lungomare) is a historic bookshop on the seafront of Viareggio. Since 2020 it has also become a literary café with natural wines, specialty coffee and evening cocktails. A gathering place for those who love aperitivo, good coffee and the Viareggio Carnival.">
+        La Libre (al secolo Libreria Lungomare) è una libreria storica sul lungomare di Viareggio. Dal 2020 è anche caffè letterario con vini naturali, specialty coffee e cocktail serali. Un ritrovo per chi ama l'aperitivo, il buon caffè e il Carnevale.
       </p>
       <div class="photo-row">
-        <!-- Replace each div with: <img src="images/interior.jpg" alt="..."> inside the photo-block div -->
-        <div class="photo-block">[ interior photo ]</div>
-        <div class="photo-block">[ café detail ]</div>
-        <div class="photo-block">[ bookshelves ]</div>
+        <!-- Replace each div with <img src="images/interior.jpg" alt="..."> inside the photo-block -->
+        <div class="photo-block">[ interno ]</div>
+        <div class="photo-block">[ caffè ]</div>
+        <div class="photo-block">[ scaffali ]</div>
       </div>
     </div>
   </section>
@@ -354,30 +372,29 @@
   <!-- BOOKS -->
   <section id="books">
     <div class="section-inner">
-      <div class="eyebrow">Local reads</div>
-      <h2>Books of this place</h2>
+      <div class="eyebrow" data-it="Libri" data-en="Books">Libri</div>
+      <h2 data-it="I nostri libri consigliati" data-en="Our recommended books">I nostri libri consigliati</h2>
       <div class="divider"></div>
-      <p class="section-body">A curated selection of titles rooted in this region — local authors, coastal stories, history and poetry.</p>
       <div class="cards">
         <div class="card">
-          <div class="card-img">[ cover ]</div>
+          <div class="card-img">[ copertina ]</div>
           <div class="card-body">
-            <div class="card-title">Book title</div>
-            <div class="card-sub">Author · Genre</div>
+            <div class="card-title">Titolo del libro</div>
+            <div class="card-sub">Autore · Genere</div>
           </div>
         </div>
         <div class="card">
-          <div class="card-img">[ cover ]</div>
+          <div class="card-img">[ copertina ]</div>
           <div class="card-body">
-            <div class="card-title">Book title</div>
-            <div class="card-sub">Author · Genre</div>
+            <div class="card-title">Titolo del libro</div>
+            <div class="card-sub">Autore · Genere</div>
           </div>
         </div>
         <div class="card">
-          <div class="card-img">[ cover ]</div>
+          <div class="card-img">[ copertina ]</div>
           <div class="card-body">
-            <div class="card-title">Book title</div>
-            <div class="card-sub">Author · Genre</div>
+            <div class="card-title">Titolo del libro</div>
+            <div class="card-sub">Autore · Genere</div>
           </div>
         </div>
       </div>
@@ -387,30 +404,30 @@
   <!-- WINE -->
   <section id="wine">
     <div class="section-inner">
-      <div class="eyebrow">Local wine</div>
-      <h2>Wines of the territory</h2>
+      <div class="eyebrow" data-it="Vino naturale" data-en="Natural wine">Vino naturale</div>
+      <h2 data-it="Vini naturali italiani" data-en="Italian natural wines">Vini naturali italiani</h2>
       <div class="divider"></div>
-      <p class="section-body">We select bottles from small producers in the area — natural, expressive, tied to the land and the sea.</p>
+      <p class="section-body" data-it="Selezioniamo bottiglie da produttori naturali e biodinamici, del territorio e non." data-en="We select bottles from natural and biodynamic producers, local and beyond.">Selezioniamo bottiglie da produttori naturali e biodinamici, del territorio e non.</p>
       <div class="cards">
         <div class="card">
-          <div class="card-img">[ bottle ]</div>
+          <div class="card-img">[ bottiglia ]</div>
           <div class="card-body">
-            <div class="card-title">Wine name</div>
-            <div class="card-sub">Producer · Grape</div>
+            <div class="card-title">Nome del vino</div>
+            <div class="card-sub">Produttore · Vitigno</div>
           </div>
         </div>
         <div class="card">
-          <div class="card-img">[ bottle ]</div>
+          <div class="card-img">[ bottiglia ]</div>
           <div class="card-body">
-            <div class="card-title">Wine name</div>
-            <div class="card-sub">Producer · Grape</div>
+            <div class="card-title">Nome del vino</div>
+            <div class="card-sub">Produttore · Vitigno</div>
           </div>
         </div>
         <div class="card">
-          <div class="card-img">[ bottle ]</div>
+          <div class="card-img">[ bottiglia ]</div>
           <div class="card-body">
-            <div class="card-title">Wine name</div>
-            <div class="card-sub">Producer · Grape</div>
+            <div class="card-title">Nome del vino</div>
+            <div class="card-sub">Produttore · Vitigno</div>
           </div>
         </div>
       </div>
@@ -420,13 +437,13 @@
   <!-- COFFEE -->
   <section id="coffee">
     <div class="section-inner">
-      <div class="eyebrow">Specialty coffee</div>
-      <h2>Coffee, seriously</h2>
+      <div class="eyebrow" data-it="Specialty coffee" data-en="Specialty coffee">Specialty coffee</div>
+      <h2 data-it="Il caffè che cercavi da sempre" data-en="The coffee you always wanted">Il caffè che cercavi da sempre</h2>
       <div class="divider"></div>
-      <p class="section-body">Single origins, careful roasters, brewed with attention. Not just coffee — a ritual.</p>
+      <p class="section-body" data-it="Origini singole, torrefattori selezionati, preparato con attenzione. Ricordati di prendere anche una confezione per i tuoi." data-en="Single origins, careful roasters, brewed with attention. Don't forget to grab a bag for your family too.">Origini singole, torrefattori selezionati, preparato con attenzione. Ricordati di prendere anche una confezione per i tuoi.</p>
       <div class="photo-row">
-        <div class="photo-block">[ brewing method ]</div>
-        <div class="photo-block">[ origin map ]</div>
+        <div class="photo-block">[ metodo di estrazione ]</div>
+        <div class="photo-block">[ mappa origini ]</div>
       </div>
     </div>
   </section>
@@ -434,37 +451,55 @@
   <!-- VISIT -->
   <section id="visit">
     <div class="section-inner">
-      <div class="eyebrow">Find us</div>
-      <h2>Come and visit</h2>
+      <div class="eyebrow" data-it="Dove siamo" data-en="Find us">Dove siamo</div>
+      <h2 data-it="Vieni a trovarci" data-en="Come and visit">Vieni a trovarci</h2>
       <div class="divider"></div>
       <div class="info-grid">
         <div class="info-item">
-          <span class="info-label">Address</span>
-          Via Lungomare 00, City
+          <span class="info-label" data-it="Indirizzo" data-en="Address">Indirizzo</span>
+          Viale Guglielmo Marconi, 68<br>55049 Viareggio
         </div>
         <div class="info-item">
-          <span class="info-label">Hours</span>
-          Tue–Sun · 9:00–20:00
+          <span class="info-label" data-it="Orari" data-en="Hours">Orari</span>
+          <span data-it="Tutti i giorni" data-en="Every day">Tutti i giorni</span><br>
+          9:00–13:00 / 16:00–02:00
         </div>
         <div class="info-item">
           <span class="info-label">Phone / WhatsApp</span>
-          +39 000 000 0000
+          <a href="tel:+393519980040" style="color:inherit;text-decoration:none;">+39 351 998 0040</a>
         </div>
         <div class="info-item">
           <span class="info-label">Email</span>
-          ciao@librerialungomare.it
+          <a href="mailto:civaiallalibre@gmail.com" style="color:inherit;text-decoration:none;">civaiallalibre@gmail.com</a>
         </div>
       </div>
       <!-- Replace this div with a Google Maps iframe when ready -->
-      <div class="map-placeholder">[ Google Maps embed ]</div>
+      <div class="map-placeholder">[ Google Maps ]</div>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
-    <div class="footer-logo">Libreria Lungomare</div>
-    <p>© 2026 · Books · Wine · Coffee</p>
+    <div class="footer-logo">La libre</div>
+    <div class="footer-sub">Libreria Lungomare · Viareggio</div>
+    <p>© 2026 · Libri · Vino · Caffè</p>
   </footer>
+
+  <!-- LANGUAGE TOGGLE -->
+  <script>
+    const toggle = document.getElementById('lang-toggle');
+    let lang = 'it';
+
+    toggle.addEventListener('click', () => {
+      lang = lang === 'it' ? 'en' : 'it';
+      toggle.textContent = lang === 'it' ? '🇬🇧' : '🇮🇹';
+
+      document.querySelectorAll('[data-it]').forEach(el => {
+        const text = el.getAttribute('data-' + lang);
+        if (text) el.innerHTML = text;
+      });
+    });
+  </script>
 
 </body>
 </html>
