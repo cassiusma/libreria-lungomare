@@ -225,15 +225,13 @@
     }
     section:nth-child(even) .card { background: var(--cream); }
     .card-img {
-      height: 130px;
       background: var(--sand);
       overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-mid);
-      font-size: 11px;
-      letter-spacing: 0.05em;
+    }
+    .card-img img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
     }
     .card-body { padding: 0.8rem 1rem; }
     .card-title {
