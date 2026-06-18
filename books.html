@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Libri — La Libre · Viareggio</title>
+  <meta name="description" content="I libri consigliati da La Libre, libreria storica sul lungomare di Viareggio." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    img { display: block; width: 100%; object-fit: cover; }
+    :root {
+      --cream: #f8f2e2; --linen: #efe6cc; --sand: #d9c99a;
+      --wood-light: #c4aa7a; --wood-mid: #8a6e4e;
+      --walnut: #4a3728; --walnut-deep: #2e2118;
+      --text-main: #2e2118; --text-mid: #6b5040; --text-muted: #9a8070;
+    }
+    body { font-family: 'Inter', sans-serif; font-weight: 300; background: var(--cream); color: var(--text-main); line-height: 1.7; }
+    nav { position: sticky; top: 0; z-index: 100; background: var(--cream); border-bottom: 0.5px solid var(--sand); padding: 0.75rem 2rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .nav-logo { text-decoration: none; white-space: nowrap; line-height: 1.2; }
+    .nav-logo-main { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 400; color: var(--walnut-deep); letter-spacing: 0.02em; display: block; }
+    .nav-logo-sub { font-size: 10px; color: var(--text-muted); letter-spacing: 0.08em; font-weight: 300; display: block; }
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+    .nav-links a { font-size: 12px; color: var(--text-mid); text-decoration: none; letter-spacing: 0.07em; text-transform: uppercase; font-weight: 400; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--walnut-deep); }
+    .nav-lang { font-size: 18px; border: 0.5px solid var(--sand); padding: 4px 10px; border-radius: 5px; cursor: pointer; background: transparent; font-family: 'Inter', sans-serif; white-space: nowrap; letter-spacing: 0.1em; }
+    .page-header { background: var(--linen); border-bottom: 0.5px solid var(--sand); padding: 3rem 2rem 2.5rem; }
+    .page-header-inner { max-width: 860px; margin: 0 auto; }
+    .eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--wood-mid); margin-bottom: 0.4rem; }
+    h1 { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 400; color: var(--walnut-deep); margin-bottom: 0.6rem; }
+    .divider { width: 40px; height: 1px; background: var(--wood-light); margin: 0.9rem 0 1.2rem; }
+    .page-intro { font-size: 14px; color: var(--text-mid); line-height: 1.9; max-width: 540px; }
+    .list-section { padding: 3rem 2rem; }
+    .list-inner { max-width: 860px; margin: 0 auto; }
+    .product-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1.2rem; }
+    .card { background: var(--linen); border: 0.5px solid var(--sand); border-radius: 10px; overflow: hidden; cursor: pointer; transition: box-shadow 0.2s, transform 0.2s; text-decoration: none; color: inherit; display: block; }
+    .card:hover { box-shadow: 0 4px 18px rgba(46,33,24,0.10); transform: translateY(-2px); }
+    .card-img { background: var(--sand); aspect-ratio: 3/4; overflow: hidden; }
+    .card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
+    .card:hover .card-img img { transform: scale(1.03); }
+    .card-body { padding: 0.8rem 1rem 1rem; }
+    .card-title { font-family: 'Playfair Display', serif; font-size: 14px; color: var(--walnut-deep); margin-bottom: 0.25rem; }
+    .card-sub { font-size: 11px; color: var(--text-muted); margin-bottom: 0.7rem; }
+    .wa-btn { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 11px; font-family: 'Inter', sans-serif; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase; color: var(--walnut); border: 0.5px solid var(--wood-mid); border-radius: 5px; padding: 0.35rem 0.7rem; text-decoration: none; transition: background 0.2s, color 0.2s; white-space: nowrap; }
+    .wa-btn:hover { background: var(--walnut); color: var(--linen); }
+    footer { background: var(--walnut-deep); padding: 2.5rem 2rem; text-align: center; }
+    .footer-logo { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--linen); margin-bottom: 0.25rem; }
+    .footer-sub { font-size: 11px; color: var(--wood-mid); letter-spacing: 0.06em; margin-bottom: 0.75rem; }
+    footer p { font-size: 11px; color: var(--wood-light); letter-spacing: 0.05em; font-weight: 300; }
+    @media (max-width: 640px) {
+      nav { padding: 0.75rem 1.2rem; }
+      .nav-links { display: none; }
+      .page-header, .list-section { padding-left: 1.2rem; padding-right: 1.2rem; }
+      .product-list { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
+    }
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <span class="nav-logo-main">La Libre</span>
+      <span class="nav-logo-sub">Libreria Lungomare</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="books.html" class="active" data-it="Libri" data-en="Books">Libri</a></li>
+      <li><a href="wine.html" data-it="Vino" data-en="Wine">Vino</a></li>
+      <li><a href="coffee.html" data-it="Caffè" data-en="Coffee">Caffè</a></li>
+      <li><a href="index.html#visit" data-it="Vieni" data-en="Visit">Vieni</a></li>
+    </ul>
+    <button class="nav-lang" id="lang-toggle" title="Switch language">🇬🇧</button>
+  </nav>
+
+  <div class="page-header">
+    <div class="page-header-inner">
+      <div class="eyebrow" data-it="Libri consigliati" data-en="Recommended books">Libri consigliati</div>
+      <h1 data-it="La nostra selezione" data-en="Our selection">La nostra selezione</h1>
+      <div class="divider"></div>
+      <p class="page-intro" data-it="Una libreria storica, una selezione curata. Clicca su un libro per saperne di più o per ordinarlo." data-en="A historic bookshop, a curated selection. Click on a book to find out more or to order it.">
+        Una libreria storica, una selezione curata. Clicca su un libro per saperne di più o per ordinarlo.
+      </p>
+    </div>
+  </div>
+
+  <div class="list-section">
+    <div class="list-inner">
+      <div class="product-list" id="books-list"></div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-logo">La Libre</div>
+    <div class="footer-sub">Libreria Lungomare · Viareggio</div>
+    <p>© 2026 · Libri · Vino · Caffè</p>
+  </footer>
+
+  <script src="products.js"></script>
+  <script>
+    const WA_ICON = `<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.122 1.523 5.855L.057 23.215a.75.75 0 0 0 .923.923l5.36-1.466A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.694 9.694 0 0 1-4.98-1.371l-.356-.212-3.705 1.013 1.013-3.705-.212-.356A9.694 9.694 0 0 1 2.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>`;
+
+    const lang_state = { lang: 'it' };
+
+    function buildBooksList() {
+      const container = document.getElementById('books-list');
+      PRODUCTS.books.forEach(p => {
+        const wa = waLink(p.title, 'books');
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+          <div class="card-img"><img loading="lazy" src="${p.foto}" alt="${p.title}" /></div>
+          <div class="card-body">
+            <div class="card-title">${p.title}</div>
+            <div class="card-sub">${p.sub}</div>
+            <a class="wa-btn" href="${wa}" target="_blank" rel="noopener" onclick="event.stopPropagation()">
+              ${WA_ICON} <span data-it="Chiedi / Ordina" data-en="Ask / Order">Chiedi / Ordina</span>
+            </a>
+          </div>`;
+        card.addEventListener('click', () => {
+          window.location.href = `detail.html?id=${p.id}&cat=books`;
+        });
+        container.appendChild(card);
+      });
+    }
+
+    buildBooksList();
+
+    const toggle = document.getElementById('lang-toggle');
+    toggle.addEventListener('click', () => {
+      lang_state.lang = lang_state.lang === 'it' ? 'en' : 'it';
+      toggle.textContent = lang_state.lang === 'it' ? '🇬🇧' : '🇮🇹';
+      document.querySelectorAll('[data-it]').forEach(el => {
+        const text = el.getAttribute('data-' + lang_state.lang);
+        if (text) el.innerHTML = text;
+      });
+    });
+  </script>
+</body>
+</html>

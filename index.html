@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>la libre — Cultura, Vino Naturale & Specialty Coffee a Viareggio</title>
+  <title>La Libre — Cultura, Vino Naturale & Specialty Coffee a Viareggio</title>
   <meta name="description" content="La Libre (Libreria Lungomare) è una libreria storica sul lungomare di Viareggio. Vini naturali, specialty coffee e cocktail serali." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -241,7 +241,49 @@
     .card-sub {
       font-size: 11px;
       color: var(--text-muted);
+      margin-bottom: 0.7rem;
     }
+    .card {
+      cursor: pointer;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .card:hover {
+      box-shadow: 0 4px 18px rgba(46,33,24,0.10);
+      transform: translateY(-2px);
+    }
+    .card-img img { transition: transform 0.3s; }
+    .card:hover .card-img img { transform: scale(1.03); }
+    .wa-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 11px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--walnut);
+      border: 0.5px solid var(--wood-mid);
+      border-radius: 5px;
+      padding: 0.35rem 0.7rem;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+      white-space: nowrap;
+    }
+    .wa-btn:hover { background: var(--walnut); color: var(--linen); }
+    .see-all {
+      display: inline-block;
+      margin-top: 1.5rem;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--walnut);
+      text-decoration: none;
+      border-bottom: 0.5px solid var(--wood-mid);
+      padding-bottom: 1px;
+      transition: color 0.2s;
+    }
+    .see-all:hover { color: var(--walnut-deep); }
 
     /* ── Visit ── */
     .info-grid {
@@ -330,9 +372,9 @@
       <span class="nav-logo-sub">Libreria Lungomare</span>
     </a>
     <ul class="nav-links">
-      <li><a href="#books" data-it="Libri" data-en="Books">Libri</a></li>
-      <li><a href="#wine" data-it="Vino" data-en="Wine">Vino</a></li>
-      <li><a href="#coffee" data-it="Caffè" data-en="Coffee">Caffè</a></li>
+      <li><a href="books.html" data-it="Libri" data-en="Books">Libri</a></li>
+      <li><a href="wine.html" data-it="Vino" data-en="Wine">Vino</a></li>
+      <li><a href="coffee.html" data-it="Caffè" data-en="Coffee">Caffè</a></li>
       <li><a href="#visit" data-it="Vieni" data-en="Visit">Vieni</a></li>
     </ul>
     <button class="nav-lang" id="lang-toggle" title="Switch language">🇬🇧</button>
@@ -368,62 +410,20 @@
       <div class="eyebrow" data-it="Libri" data-en="Books">Libri</div>
       <h2 data-it="I nostri libri consigliati" data-en="Our recommended books">I nostri libri consigliati</h2>
       <div class="divider"></div>
-      <div class="cards">
-        <div class="card">
-          <div class="card-img"><img loading="lazy" src="foto/libro_dormire.webp" alt="Dormir al sol" /></div>
-          <div class="card-body">
-            <div class="card-title">Dormire al sole</div>
-            <div class="card-sub">Adolfo Bioy Casares · Sur · €16,50</div>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-img"><img loading="lazy" src="foto/libro_unavita.webp" alt="Una vita come tante" /></div>
-          <div class="card-body">
-            <div class="card-title">Una vita come tante</div>
-            <div class="card-sub">Hanya Yanagihara · Sellerio · €27,00</div>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-img"><img loading="lazy" src="foto/libro_allegro.webp" alt="Allegro ma non troppo" /></div>
-          <div class="card-body">
-            <div class="card-title">Allegro ma non troppo</div>
-            <div class="card-sub">Carlo M. Cipolla · il Mulino · €13,00</div>
-          </div>
-        </div>
-      </div>
+      <div class="cards" id="books-cards"></div>
+      <a href="books.html" class="see-all" data-it="Vedi tutti i libri →" data-en="See all books →">Vedi tutti i libri →</a>
     </div>
   </section>
 
   <!-- WINE -->
   <section id="wine">
     <div class="section-inner">
-      <div class="eyebrow" data-it="Vini naturali e altri" data-en="Natural wine and others">Vino naturale</div>
+      <div class="eyebrow" data-it="Vini naturali e altri" data-en="Natural wine and others">Vino</div>
       <h2 data-it="Vini italiani non convenzionali" data-en="Italian unconventional wines">Vini italiani non convenzionali</h2>
       <div class="divider"></div>
       <p class="section-body" data-it="Selezioniamo bottiglie da produttori naturali e biodinamici, del territorio e non." data-en="We select bottles from natural and biodynamic producers, local and beyond.">Selezioniamo bottiglie da produttori naturali e biodinamici, del territorio e non.</p>
-      <div class="cards">
-        <div class="card">
-          <div class="card-img"><img loading="lazy" src="foto/vino_fuggitivo.webp" alt="Fuggitivo" /></div>
-          <div class="card-body">
-            <div class="card-title">Fuggitivo</div>
-            <div class="card-sub">Fattoria Castellina · Rosato fermo · €24,00</div>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-img"><img loading="lazy" src="foto/vino_libreria.webp" alt="Libreria Lungomare coll'artista PrimoLoi" /></div>
-          <div class="card-body">
-            <div class="card-title">Libreria Lungomare coll'artista PrimoLoi</div>
-            <div class="card-sub">Podere Spazzavento · Bianco fermo biologico · €15,00</div>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-img"><img loading="lazy" src="foto/vino_fermentato.webp" alt="Anarkica" /></div>
-          <div class="card-body">
-            <div class="card-title">Anarkica</div>
-            <div class="card-sub">Simone Manicardi · Bianco frizzante · €23,00</div>
-          </div>
-        </div>
-      </div>
+      <div class="cards" id="wine-cards"></div>
+      <a href="wine.html" class="see-all" data-it="Vedi tutti i vini →" data-en="See all wines →">Vedi tutti i vini →</a>
     </div>
   </section>
 
@@ -434,29 +434,8 @@
       <h2 data-it="Il caffè che cercavi da sempre" data-en="The coffee you always wanted">Il caffè che cercavi da sempre</h2>
       <div class="divider"></div>
       <p class="section-body" data-it="Origini singole, torrefattori selezionati, preparato con attenzione. Ricordati di prendere anche una confezione per i tuoi." data-en="Single origins, careful roasters, brewed with attention. Don't forget to grab a bag for your family too.">Origini singole, torrefattori selezionati, preparato con attenzione. Ricordati di prendere anche una confezione per i tuoi.</p>
-      <div class="cards">
-        <div class="card">
-          <div class="card-img"><img loading="lazy" src="foto/cafe_costarica.webp" alt="Caffè Costa Rica" /></div>
-          <div class="card-body">
-            <div class="card-title">Costa Rica</div>
-            <div class="card-sub">Spazio Caffè Firenze · Espresso</div>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-img"><img loading="lazy" src="foto/cafe_lasosta.webp" alt="Caffè Guatemala" /></div>
-          <div class="card-body">
-            <div class="card-title">Guatemala</div>
-            <div class="card-sub">La Sosta · Filter</div>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-img"><img loading="lazy" src="foto/cafe_chicco.webp" alt="Caffè Brasil" /></div>
-          <div class="card-body">
-            <div class="card-title">Brasil Mantiqueira</div>
-            <div class="card-sub">Chicco Pezzini · Espresso</div>
-          </div>
-        </div>
-      </div>
+      <div class="cards" id="coffee-cards"></div>
+      <a href="coffee.html" class="see-all" data-it="Vedi tutti i caffè →" data-en="See all coffees →">Vedi tutti i caffè →</a>
     </div>
   </section>
 
@@ -496,15 +475,43 @@
     <p>© 2026 · Libri · Vino · Caffè</p>
   </footer>
 
-  <!-- LANGUAGE TOGGLE -->
+  <script src="products.js"></script>
   <script>
+    const WA_ICON = `<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.122 1.523 5.855L.057 23.215a.75.75 0 0 0 .923.923l5.36-1.466A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.694 9.694 0 0 1-4.98-1.371l-.356-.212-3.705 1.013 1.013-3.705-.212-.356A9.694 9.694 0 0 1 2.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>`;
+
+    function renderCards(containerId, products, cat) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      products.slice(0, 3).forEach(p => {
+        const wa = waLink(p.title, cat);
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+          <div class="card-img"><img loading="lazy" src="${p.foto}" alt="${p.title}" /></div>
+          <div class="card-body">
+            <div class="card-title">${p.title}</div>
+            <div class="card-sub">${p.sub}</div>
+            <a class="wa-btn" href="${wa}" target="_blank" rel="noopener" onclick="event.stopPropagation()">
+              ${WA_ICON} <span data-it="Chiedi / Ordina" data-en="Ask / Order">Chiedi / Ordina</span>
+            </a>
+          </div>`;
+        card.addEventListener('click', () => {
+          window.location.href = `detail.html?id=${p.id}&cat=${cat}`;
+        });
+        container.appendChild(card);
+      });
+    }
+
+    renderCards('books-cards',  PRODUCTS.books,  'books');
+    renderCards('wine-cards',   PRODUCTS.wine,   'wine');
+    renderCards('coffee-cards', PRODUCTS.coffee, 'coffee');
+
+    // Language toggle
     const toggle = document.getElementById('lang-toggle');
     let lang = 'it';
-
     toggle.addEventListener('click', () => {
       lang = lang === 'it' ? 'en' : 'it';
       toggle.textContent = lang === 'it' ? '🇬🇧' : '🇮🇹';
-
       document.querySelectorAll('[data-it]').forEach(el => {
         const text = el.getAttribute('data-' + lang);
         if (text) el.innerHTML = text;
