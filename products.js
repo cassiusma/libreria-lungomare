@@ -16,6 +16,33 @@ function waLink(productTitle, category) {
 
 const PRODUCTS = {
 
+  about: [
+    {
+      id: 'bancone',
+      foto: 'foto/bancone.webp',
+      title: 'Il bancone',
+      sub: 'Dove nasce ogni caffè',
+      description_it: 'Il bancone è il cuore pulsante di La Libre fin dal mattino. Qui prepariamo ogni caffè con cura, origine per origine, scegliendo torrefattori che condividono la nostra stessa filosofia: poche miscele, ma scelte bene. Non è solo il posto dove si ordina: è il punto di incontro tra chi cerca un libro e chi cerca due chiacchiere, tra chi passa per un espresso veloce e chi si ferma per un\'ora intera. Dietro al bancone lavoriamo noi, le stesse persone che consigliano i libri sugli scaffali a pochi passi di distanza — perché per noi cultura e ospitalità sono sempre state la stessa cosa.',
+      description_en: 'The counter has been the beating heart of La Libre since morning opens. Here we prepare every coffee with care, origin by origin, choosing roasters who share our same philosophy: few blends, but chosen well. It\'s not just where you order: it\'s the meeting point between those looking for a book and those looking for a chat, between those passing through for a quick espresso and those who stay for a full hour. Behind the counter are the same people who recommend the books on the shelves just steps away — because for us, culture and hospitality have always been the same thing.',
+    },
+    {
+      id: 'terrazza',
+      foto: 'foto/terraza.webp',
+      title: 'La terrazza',
+      sub: 'Aperitivo con vista lungomare',
+      description_it: 'Affacciata sul lungomare di Viareggio, la nostra terrazza è il posto giusto per guardare il tramonto con un calice di vino naturale in mano. Di giorno è un angolo tranquillo dove leggere all\'aria aperta; al calar del sole si trasforma nel ritrovo per l\'aperitivo, tra amici vecchi e nuovi. Ogni sera serviamo vini naturali e biodinamici a rotazione, pensati per accompagnare una conversazione che si allunga. Durante il Carnevale di Viareggio, la terrazza diventa uno dei punti di osservazione più amati della città: un bicchiere in mano e i carri allegorici che sfilano a pochi metri.',
+      description_en: 'Overlooking the Viareggio seafront, our terrace is the right place to watch the sunset with a glass of natural wine in hand. By day it\'s a quiet corner for reading outdoors; as the sun goes down it turns into the gathering spot for aperitivo, among old and new friends. Every evening we serve a rotating selection of natural and biodynamic wines, chosen to accompany a conversation that runs long. During the Viareggio Carnival, the terrace becomes one of the city\'s favourite viewing spots: a glass in hand and the parade floats passing just metres away.',
+    },
+    {
+      id: 'scaffali',
+      foto: 'foto/scaffali.webp',
+      title: 'Gli scaffali',
+      sub: 'Una selezione curata di libri',
+      description_it: 'I nostri scaffali non puntano a contenere tutto: puntano a contenere il meglio. Ogni libro che trovate a La Libre è stato letto e scelto da noi, mai inserito solo perché va di moda. Privilegiamo narrativa internazionale, piccole case editrici indipendenti e qualche riscoperta dimenticata ingiustamente. Se non sapete cosa leggere, chiedeteci: è la parte del lavoro che ci piace di più. La selezione cambia spesso, quindi vale la pena passare regolarmente — quello che vedete oggi potrebbe non esserci la settimana prossima, sostituito da una nuova scoperta.',
+      description_en: 'Our shelves don\'t aim to hold everything: they aim to hold the best. Every book you\'ll find at La Libre has been read and chosen by us, never added just because it\'s trending. We favour international fiction, small independent publishers, and the occasional unjustly forgotten rediscovery. If you don\'t know what to read, ask us: it\'s the part of the job we enjoy most. The selection changes often, so it\'s worth stopping by regularly — what you see today might be gone next week, replaced by a new discovery.',
+    },
+  ],
+
   wine: [
     {
       id: 'fuggitivo',
