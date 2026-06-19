@@ -28,6 +28,17 @@
     .nav-links a { font-size: 12px; color: var(--text-mid); text-decoration: none; letter-spacing: 0.07em; text-transform: uppercase; font-weight: 400; transition: color 0.2s; }
     .nav-links a:hover, .nav-links a.active { color: var(--walnut-deep); }
     .nav-lang { font-size: 18px; border: 0.5px solid var(--sand); padding: 4px 10px; border-radius: 5px; cursor: pointer; background: transparent; font-family: 'Inter', sans-serif; white-space: nowrap; letter-spacing: 0.1em; }
+    .nav-right { display: flex; align-items: center; gap: 0.75rem; }
+    .burger { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 32px; height: 32px; background: transparent; border: 0.5px solid var(--sand); border-radius: 5px; cursor: pointer; padding: 0; }
+    .burger span { display: block; width: 16px; height: 1.5px; background: var(--walnut-deep); margin: 0 auto; transition: transform 0.25s, opacity 0.25s; }
+    .burger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .burger.open span:nth-child(2) { opacity: 0; }
+    .burger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+    .mobile-menu { display: none; flex-direction: column; background: var(--linen); border-bottom: 0.5px solid var(--sand); overflow: hidden; max-height: 0; transition: max-height 0.3s ease; }
+    .mobile-menu.open { max-height: 300px; }
+    .mobile-menu a { padding: 0.9rem 1.2rem; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-mid); text-decoration: none; border-bottom: 0.5px solid var(--sand); }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a:hover { color: var(--walnut-deep); }
 
     /* Page header */
     .page-header { background: var(--linen); border-bottom: 0.5px solid var(--sand); padding: 3rem 2rem 2.5rem; }
@@ -64,6 +75,8 @@
     @media (max-width: 640px) {
       nav { padding: 0.75rem 1.2rem; }
       .nav-links { display: none; }
+      .burger { display: flex; }
+      .mobile-menu { display: flex; }
       .page-header, .list-section { padding-left: 1.2rem; padding-right: 1.2rem; }
       .product-list { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
     }
@@ -83,8 +96,20 @@
       <li><a href="coffee.html" data-it="Caffè" data-en="Coffee">Caffè</a></li>
       <li><a href="index.html#visit" data-it="Vieni" data-en="Visit">Vieni</a></li>
     </ul>
-    <button class="nav-lang" id="lang-toggle" title="Switch language">🇬🇧</button>
+    <div class="nav-right">
+      <button class="nav-lang" id="lang-toggle" title="Switch language">🇬🇧</button>
+      <button class="burger" id="burger-toggle" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </nav>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="books.html" data-it="Libri" data-en="Books">Libri</a>
+    <a href="wine.html" data-it="Vino" data-en="Wine">Vino</a>
+    <a href="coffee.html" data-it="Caffè" data-en="Coffee">Caffè</a>
+    <a href="index.html#visit" data-it="Vieni" data-en="Visit">Vieni</a>
+  </div>
 
   <div class="page-header">
     <div class="page-header-inner">
@@ -110,10 +135,9 @@
   </footer>
 
   <script src="products.js"></script>
+  <script src="site.js"></script>
   <script>
     const WA_ICON = `<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.122 1.523 5.855L.057 23.215a.75.75 0 0 0 .923.923l5.36-1.466A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.694 9.694 0 0 1-4.98-1.371l-.356-.212-3.705 1.013 1.013-3.705-.212-.356A9.694 9.694 0 0 1 2.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>`;
-
-    const lang_state = { lang: 'it' };
 
     function buildWineList() {
       const container = document.getElementById('wine-list');
@@ -131,7 +155,7 @@
             </a>
           </div>`;
         card.addEventListener('click', () => {
-          window.location.href = `detail.html?id=${p.id}&cat=wine`;
+          window.location.href = `detail.html?id=${p.id}&cat=wine&lang=${LaLibreSite.getLang()}`;
         });
         container.appendChild(card);
       });
@@ -139,16 +163,10 @@
 
     buildWineList();
 
-    // Language toggle
-    const toggle = document.getElementById('lang-toggle');
-    toggle.addEventListener('click', () => {
-      lang_state.lang = lang_state.lang === 'it' ? 'en' : 'it';
-      toggle.textContent = lang_state.lang === 'it' ? '🇬🇧' : '🇮🇹';
-      document.querySelectorAll('[data-it]').forEach(el => {
-        const text = el.getAttribute('data-' + lang_state.lang);
-        if (text) el.innerHTML = text;
-      });
-    });
+    // Re-apply translations/link language now that dynamic cards exist
+    const lang = LaLibreSite.getLang();
+    LaLibreSite.applyTranslations(lang);
+    LaLibreSite.rewriteInternalLinks(lang);
   </script>
 </body>
 </html>

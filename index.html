@@ -95,6 +95,56 @@
       white-space: nowrap;
       letter-spacing: 0.1em;
     }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .burger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 32px;
+      height: 32px;
+      background: transparent;
+      border: 0.5px solid var(--sand);
+      border-radius: 5px;
+      cursor: pointer;
+      padding: 0;
+    }
+    .burger span {
+      display: block;
+      width: 16px;
+      height: 1.5px;
+      background: var(--walnut-deep);
+      margin: 0 auto;
+      transition: transform 0.25s, opacity 0.25s;
+    }
+    .burger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .burger.open span:nth-child(2) { opacity: 0; }
+    .burger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      background: var(--linen);
+      border-bottom: 0.5px solid var(--sand);
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.3s ease;
+    }
+    .mobile-menu.open { max-height: 300px; }
+    .mobile-menu a {
+      padding: 0.9rem 1.2rem;
+      font-size: 13px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-mid);
+      text-decoration: none;
+      border-bottom: 0.5px solid var(--sand);
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a:hover { color: var(--walnut-deep); }
 
     /* ── Hero ── */
     .hero {
@@ -246,6 +296,9 @@
     .card {
       cursor: pointer;
       transition: box-shadow 0.2s, transform 0.2s;
+      text-decoration: none;
+      color: inherit;
+      display: block;
     }
     .card:hover {
       box-shadow: 0 4px 18px rgba(46,33,24,0.10);
@@ -284,6 +337,28 @@
       transition: color 0.2s;
     }
     .see-all:hover { color: var(--walnut-deep); }
+    .section-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .see-all-top {
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-mid);
+      text-decoration: none;
+      white-space: nowrap;
+      border-bottom: 0.5px solid var(--wood-light);
+      padding-bottom: 1px;
+      margin-top: 0.3rem;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .see-all-top:hover { color: var(--walnut-deep); border-color: var(--wood-mid); }
+    @media (max-width: 640px) {
+      .section-head { flex-direction: column; gap: 0.4rem; }
+    }
 
     /* ── Visit ── */
     .info-grid {
@@ -349,6 +424,8 @@
     @media (max-width: 640px) {
       nav { padding: 0.75rem 1.2rem; }
       .nav-links { display: none; }
+      .burger { display: flex; }
+      .mobile-menu { display: flex; }
       .hero { padding: 2rem 1.2rem; }
       .hero h1 { font-size: 28px; }
       .hero-img { height: 200px; }
@@ -367,7 +444,7 @@
 
   <!-- NAV -->
   <nav>
-    <a href="#" class="nav-logo">
+    <a href="index.html" class="nav-logo">
       <span class="nav-logo-main">La Libre</span>
       <span class="nav-logo-sub">Libreria Lungomare</span>
     </a>
@@ -377,14 +454,25 @@
       <li><a href="coffee.html" data-it="Caffè" data-en="Coffee">Caffè</a></li>
       <li><a href="#visit" data-it="Vieni" data-en="Visit">Vieni</a></li>
     </ul>
-    <button class="nav-lang" id="lang-toggle" title="Switch language">🇬🇧</button>
+    <div class="nav-right">
+      <button class="nav-lang" id="lang-toggle" title="Switch language">🇬🇧</button>
+      <button class="burger" id="burger-toggle" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </nav>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="books.html" data-it="Libri" data-en="Books">Libri</a>
+    <a href="wine.html" data-it="Vino" data-en="Wine">Vino</a>
+    <a href="coffee.html" data-it="Caffè" data-en="Coffee">Caffè</a>
+    <a href="#visit" data-it="Vieni" data-en="Visit">Vieni</a>
+  </div>
 
   <!-- HERO -->
   <section class="hero">
     <div class="hero-img"><img loading="lazy" src="foto/dallentrata.webp" alt="La Libre sul lungomare di Viareggio" /></div>
     <h1 data-it="Cultura, vino naturale<br>e specialty coffee" data-en="Culture, natural wine<br>and specialty coffee">Cultura, vino naturale<br>e specialty coffee</h1>
-    <p data-it="con aria di mare" data-en="with a sea breeze">con aria di mare</p>
     <a href="#visit" class="btn" data-it="Vieni a trovarci" data-en="Find us">Vieni a trovarci</a>
   </section>
 
@@ -397,18 +485,42 @@
       <p class="section-body" data-it="La Libre (al secolo Libreria Lungomare) è una libreria storica sul lungomare di Viareggio. Dal 2020 è anche caffè letterario con vini naturali, specialty coffee e cocktail serali. Un ritrovo per chi ama l'aperitivo, il buon caffè e il Carnevale." data-en="La Libre (formally Libreria Lungomare) is a historic bookshop on the seafront of Viareggio. Since 2020 it has also become a literary café with natural wines, specialty coffee and evening cocktails. A gathering place for those who love aperitivo, good coffee and the Viareggio Carnival.">
         La Libre (al secolo Libreria Lungomare) è una libreria storica sul lungomare di Viareggio. Dal 2020 è anche caffè letterario con vini naturali, specialty coffee e cocktail serali. Un ritrovo per chi ama l'aperitivo, il buon caffè e il Carnevale.
       </p>
-      <div class="photo-row">
-        <div class="photo-block"><img loading="lazy" src="foto/bancone.webp" alt="Il bancone del caffè" /></div>
-        <div class="photo-block"><img loading="lazy" src="foto/terraza.webp" alt="La terrazza esterna" /></div>
-        <div class="photo-block"><img loading="lazy" src="foto/scaffali.webp" alt="Gli scaffali della libreria" /></div>
+      <div class="cards">
+        <a href="about.html" class="card">
+          <div class="card-img"><img loading="lazy" src="foto/bancone.webp" alt="Il bancone del caffè" /></div>
+          <div class="card-body">
+            <div class="card-title" data-it="Il bancone" data-en="The counter">Il bancone</div>
+            <div class="card-sub" data-it="Dove nasce ogni caffè" data-en="Where every coffee begins">Dove nasce ogni caffè</div>
+          </div>
+        </a>
+        <a href="about.html" class="card">
+          <div class="card-img"><img loading="lazy" src="foto/terraza.webp" alt="La terrazza esterna" /></div>
+          <div class="card-body">
+            <div class="card-title" data-it="La terrazza" data-en="The terrace">La terrazza</div>
+            <div class="card-sub" data-it="Aperitivo con vista lungomare" data-en="Aperitivo overlooking the seafront">Aperitivo con vista lungomare</div>
+          </div>
+        </a>
+        <a href="about.html" class="card">
+          <div class="card-img"><img loading="lazy" src="foto/scaffali.webp" alt="Gli scaffali della libreria" /></div>
+          <div class="card-body">
+            <div class="card-title" data-it="Gli scaffali" data-en="The shelves">Gli scaffali</div>
+            <div class="card-sub" data-it="Una selezione curata di libri" data-en="A curated selection of books">Una selezione curata di libri</div>
+          </div>
+        </a>
       </div>
+      <a href="about.html" class="see-all" data-it="Scopri di più su di noi →" data-en="Discover more about us →">Scopri di più su di noi →</a>
     </div>
   </section>
 
   <section id="books">
     <div class="section-inner">
-      <div class="eyebrow" data-it="Libri" data-en="Books">Libri</div>
-      <h2 data-it="I nostri libri consigliati" data-en="Our recommended books">I nostri libri consigliati</h2>
+      <div class="section-head">
+        <div>
+          <div class="eyebrow" data-it="Libri" data-en="Books">Libri</div>
+          <h2 data-it="I nostri libri consigliati" data-en="Our recommended books">I nostri libri consigliati</h2>
+        </div>
+        <a href="books.html" class="see-all-top" data-it="Vedi tutti i libri →" data-en="See all books →">Vedi tutti i libri →</a>
+      </div>
       <div class="divider"></div>
       <div class="cards" id="books-cards"></div>
       <a href="books.html" class="see-all" data-it="Vedi tutti i libri →" data-en="See all books →">Vedi tutti i libri →</a>
@@ -418,8 +530,13 @@
   <!-- WINE -->
   <section id="wine">
     <div class="section-inner">
-      <div class="eyebrow" data-it="Vini naturali e altri" data-en="Natural wine and others">Vino</div>
-      <h2 data-it="Vini italiani non convenzionali" data-en="Italian unconventional wines">Vini italiani non convenzionali</h2>
+      <div class="section-head">
+        <div>
+          <div class="eyebrow" data-it="Vini naturali e altri" data-en="Natural wine and others">Vino</div>
+          <h2 data-it="Vini non convenzionali" data-en="Unconventional wines">Vini non convenzionali</h2>
+        </div>
+        <a href="wine.html" class="see-all-top" data-it="Vedi tutti i vini →" data-en="See all wines →">Vedi tutti i vini →</a>
+      </div>
       <div class="divider"></div>
       <p class="section-body" data-it="Selezioniamo bottiglie da produttori naturali e biodinamici, del territorio e non." data-en="We select bottles from natural and biodynamic producers, local and beyond.">Selezioniamo bottiglie da produttori naturali e biodinamici, del territorio e non.</p>
       <div class="cards" id="wine-cards"></div>
@@ -430,8 +547,13 @@
   <!-- COFFEE -->
   <section id="coffee">
     <div class="section-inner">
-      <div class="eyebrow" data-it="Specialty coffee" data-en="Specialty coffee">Specialty coffee</div>
-      <h2 data-it="Il caffè che cercavi da sempre" data-en="The coffee you always wanted">Il caffè che cercavi da sempre</h2>
+      <div class="section-head">
+        <div>
+          <div class="eyebrow" data-it="Specialty coffee" data-en="Specialty coffee">Specialty coffee</div>
+          <h2 data-it="Il caffè che cercavi da sempre" data-en="The coffee you always wanted">Il caffè che cercavi da sempre</h2>
+        </div>
+        <a href="coffee.html" class="see-all-top" data-it="Vedi tutti i caffè →" data-en="See all coffees →">Vedi tutti i caffè →</a>
+      </div>
       <div class="divider"></div>
       <p class="section-body" data-it="Origini singole, torrefattori selezionati, preparato con attenzione. Ricordati di prendere anche una confezione per i tuoi." data-en="Single origins, careful roasters, brewed with attention. Don't forget to grab a bag for your family too.">Origini singole, torrefattori selezionati, preparato con attenzione. Ricordati di prendere anche una confezione per i tuoi.</p>
       <div class="cards" id="coffee-cards"></div>
@@ -476,6 +598,7 @@
   </footer>
 
   <script src="products.js"></script>
+  <script src="site.js"></script>
   <script>
     const WA_ICON = `<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.122 1.523 5.855L.057 23.215a.75.75 0 0 0 .923.923l5.36-1.466A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.694 9.694 0 0 1-4.98-1.371l-.356-.212-3.705 1.013 1.013-3.705-.212-.356A9.694 9.694 0 0 1 2.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>`;
 
@@ -496,7 +619,7 @@
             </a>
           </div>`;
         card.addEventListener('click', () => {
-          window.location.href = `detail.html?id=${p.id}&cat=${cat}`;
+          window.location.href = `detail.html?id=${p.id}&cat=${cat}&lang=${LaLibreSite.getLang()}`;
         });
         container.appendChild(card);
       });
@@ -506,17 +629,10 @@
     renderCards('wine-cards',   PRODUCTS.wine,   'wine');
     renderCards('coffee-cards', PRODUCTS.coffee, 'coffee');
 
-    // Language toggle
-    const toggle = document.getElementById('lang-toggle');
-    let lang = 'it';
-    toggle.addEventListener('click', () => {
-      lang = lang === 'it' ? 'en' : 'it';
-      toggle.textContent = lang === 'it' ? '🇬🇧' : '🇮🇹';
-      document.querySelectorAll('[data-it]').forEach(el => {
-        const text = el.getAttribute('data-' + lang);
-        if (text) el.innerHTML = text;
-      });
-    });
+    // Re-apply translations/link language now that dynamic cards exist
+    const lang = LaLibreSite.getLang();
+    LaLibreSite.applyTranslations(lang);
+    LaLibreSite.rewriteInternalLinks(lang);
   </script>
 
 </body>
