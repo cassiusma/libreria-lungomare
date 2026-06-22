@@ -7,69 +7,8 @@
   <meta name="description" content="La selezione di specialty coffee di La Libre, Viareggio." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    img { display: block; width: 100%; object-fit: cover; }
-    :root {
-      --cream: #f8f2e2; --linen: #efe6cc; --sand: #d9c99a;
-      --wood-light: #c4aa7a; --wood-mid: #8a6e4e;
-      --walnut: #4a3728; --walnut-deep: #2e2118;
-      --text-main: #2e2118; --text-mid: #6b5040; --text-muted: #9a8070;
-    }
-    body { font-family: 'Inter', sans-serif; font-weight: 300; background: var(--cream); color: var(--text-main); line-height: 1.7; }
-    nav { position: sticky; top: 0; z-index: 100; background: var(--cream); border-bottom: 0.5px solid var(--sand); padding: 0.75rem 2rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
-    .nav-logo { text-decoration: none; white-space: nowrap; line-height: 1.2; }
-    .nav-logo-main { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 400; color: var(--walnut-deep); letter-spacing: 0.02em; display: block; }
-    .nav-logo-sub { font-size: 10px; color: var(--text-muted); letter-spacing: 0.08em; font-weight: 300; display: block; }
-    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
-    .nav-links a { font-size: 12px; color: var(--text-mid); text-decoration: none; letter-spacing: 0.07em; text-transform: uppercase; font-weight: 400; transition: color 0.2s; }
-    .nav-links a:hover, .nav-links a.active { color: var(--walnut-deep); }
-    .nav-lang { font-size: 18px; border: 0.5px solid var(--sand); padding: 4px 10px; border-radius: 5px; cursor: pointer; background: transparent; font-family: 'Inter', sans-serif; white-space: nowrap; letter-spacing: 0.1em; }
-    .nav-right { display: flex; align-items: center; gap: 0.75rem; }
-    .burger { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 32px; height: 32px; background: transparent; border: 0.5px solid var(--sand); border-radius: 5px; cursor: pointer; padding: 0; }
-    .burger span { display: block; width: 16px; height: 1.5px; background: var(--walnut-deep); margin: 0 auto; transition: transform 0.25s, opacity 0.25s; }
-    .burger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
-    .burger.open span:nth-child(2) { opacity: 0; }
-    .burger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
-    .mobile-menu { display: none; flex-direction: column; background: var(--linen); border-bottom: 0.5px solid var(--sand); overflow: hidden; max-height: 0; transition: max-height 0.3s ease; }
-    .mobile-menu.open { max-height: 300px; }
-    .mobile-menu a { padding: 0.9rem 1.2rem; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-mid); text-decoration: none; border-bottom: 0.5px solid var(--sand); }
-    .mobile-menu a:last-child { border-bottom: none; }
-    .mobile-menu a:hover { color: var(--walnut-deep); }
-    .page-header { background: var(--linen); border-bottom: 0.5px solid var(--sand); padding: 3rem 2rem 2.5rem; }
-    .page-header-inner { max-width: 860px; margin: 0 auto; }
-    .eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--wood-mid); margin-bottom: 0.4rem; }
-    h1 { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 400; color: var(--walnut-deep); margin-bottom: 0.6rem; }
-    .divider { width: 40px; height: 1px; background: var(--wood-light); margin: 0.9rem 0 1.2rem; }
-    .page-intro { font-size: 14px; color: var(--text-mid); line-height: 1.9; max-width: 540px; }
-    .list-section { padding: 3rem 2rem; }
-    .list-inner { max-width: 860px; margin: 0 auto; }
-    .product-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1.2rem; }
-    .card { background: var(--linen); border: 0.5px solid var(--sand); border-radius: 10px; overflow: hidden; cursor: pointer; transition: box-shadow 0.2s, transform 0.2s; text-decoration: none; color: inherit; display: block; }
-    .card:hover { box-shadow: 0 4px 18px rgba(46,33,24,0.10); transform: translateY(-2px); }
-    .card-img { background: var(--sand); aspect-ratio: 3/4; overflow: hidden; }
-    .card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
-    .card:hover .card-img img { transform: scale(1.03); }
-    .card-body { padding: 0.8rem 1rem 1rem; }
-    .card-title { font-family: 'Playfair Display', serif; font-size: 14px; color: var(--walnut-deep); margin-bottom: 0.25rem; }
-    .card-sub { font-size: 11px; color: var(--text-muted); margin-bottom: 0.7rem; }
-    .wa-btn { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 11px; font-family: 'Inter', sans-serif; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase; color: var(--walnut); border: 0.5px solid var(--wood-mid); border-radius: 5px; padding: 0.35rem 0.7rem; text-decoration: none; transition: background 0.2s, color 0.2s; white-space: nowrap; }
-    .wa-btn:hover { background: var(--walnut); color: var(--linen); }
-    footer { background: var(--walnut-deep); padding: 2.5rem 2rem; text-align: center; }
-    .footer-logo { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--linen); margin-bottom: 0.25rem; }
-    .footer-sub { font-size: 11px; color: var(--wood-mid); letter-spacing: 0.06em; margin-bottom: 0.75rem; }
-    footer p { font-size: 11px; color: var(--wood-light); letter-spacing: 0.05em; font-weight: 300; }
-    @media (max-width: 640px) {
-      nav { padding: 0.75rem 1.2rem; }
-      .nav-links { display: none; }
-      .burger { display: flex; }
-      .mobile-menu { display: flex; }
-      .page-header, .list-section { padding-left: 1.2rem; padding-right: 1.2rem; }
-      .product-list { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
-    }
-    @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Caveat:wght@500;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="lalibre.css" />
 </head>
 <body>
 
