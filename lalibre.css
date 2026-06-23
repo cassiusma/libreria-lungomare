@@ -250,7 +250,7 @@ section:nth-child(even) .card { background: var(--paper); }
 .card:hover .card-img img { transform: scale(1.04); }
 .card-body { padding: 0.9rem 1rem 1.1rem; }
 .card-title { font-family: var(--font-display); font-weight: 800; font-size: 16px; color: var(--ink); line-height: 1.05; margin-bottom: 0.3rem; }
-.card-sub { font-family: var(--font-hand); font-size: 18px; color: var(--ink-mute); line-height: 1.15; margin-bottom: 0.7rem; }
+.card-sub { font-family: var(--font-hand); font-size: 18px; color: var(--ink-soft); line-height: 1.15; margin-bottom: 0.7rem; }
 
 /* ── Visit (home) ── */
 .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; margin-top: 1.6rem; }
@@ -276,7 +276,7 @@ iframe { border: var(--border) !important; border-radius: 0 !important; box-shad
 .detail-img-wrap { border: var(--border); box-shadow: var(--shadow-lg); border-radius: 0; overflow: hidden; aspect-ratio: 3/4; background: var(--paper-2); }
 .detail-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
 .detail-title { font-size: clamp(30px, 4vw, 44px); margin-bottom: 0.5rem; }
-.detail-meta { font-family: var(--font-hand); font-size: 17px; color: var(--ink-mute); line-height: 1.2; }
+.detail-meta { font-family: var(--font-hand); font-size: 20px; color: var(--ink-soft); line-height: 1.2; }
 .detail-price { font-family: var(--font-display); font-weight: 800; font-size: 26px; color: var(--ink); margin: 1rem 0 0.25rem; }
 .detail-desc { font-size: 16px; color: var(--ink-soft); line-height: 1.75; max-width: 500px; margin-bottom: 2rem; }
 
