@@ -250,7 +250,7 @@ section:nth-child(even) .card { background: var(--paper); }
 .card:hover .card-img img { transform: scale(1.04); }
 .card-body { padding: 0.9rem 1rem 1.1rem; }
 .card-title { font-family: var(--font-display); font-weight: 800; font-size: 16px; color: var(--ink); line-height: 1.05; margin-bottom: 0.3rem; }
-.card-sub { font-family: var(--font-hand); font-size: 15px; color: var(--ink-mute); line-height: 1.15; margin-bottom: 0.7rem; }
+.card-sub { font-family: var(--font-hand); font-size: 18px; color: var(--ink-mute); line-height: 1.15; margin-bottom: 0.7rem; }
 
 /* ── Visit (home) ── */
 .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; margin-top: 1.6rem; }
