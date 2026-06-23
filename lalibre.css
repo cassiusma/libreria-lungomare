@@ -257,7 +257,7 @@ section:nth-child(even) .card { background: var(--paper); }
 .info-item { font-size: 15px; color: var(--ink-soft); }
 .info-item a { color: var(--ink); text-decoration: none; border-bottom: 2px solid var(--marker); }
 .info-label {
-  display: block; font-family: var(--font-hand); font-size: 16px;
+  display: block; font-family: var(--font-hand); font-size: 22px;
   letter-spacing: 0; text-transform: none; color: var(--accent);
   margin-bottom: 0.15rem; font-weight: 700;
 }
