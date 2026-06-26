@@ -25,7 +25,7 @@ img { display: block; width: 100%; object-fit: cover; }
 
   --font-display: 'Archivo', system-ui, sans-serif;
   --font-body:    'Archivo', system-ui, sans-serif;
-  --font-hand:    'Kalam', cursive;
+  --font-hand:    'Special Elite', cursive;
 
   /* hand-drawn marker squiggle, used for .divider */
   --squiggle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='130' height='14' viewBox='0 0 130 14'%3E%3Cpath d='M2 8 Q 12 1 22 8 T 42 8 T 62 8 T 82 8 T 102 8 T 128 8' fill='none' stroke='%2316110b' stroke-width='3.5' stroke-linecap='round'/%3E%3C/svg%3E");
@@ -64,7 +64,7 @@ h1, h2, .detail-title, .footer-logo, .nav-logo-main {
 .eyebrow {
   font-family: var(--font-hand);
   font-size: 22px;
-  font-weight: 700;
+  font-weight: 400;
   letter-spacing: 0;
   text-transform: none;
   color: var(--accent);
@@ -259,7 +259,7 @@ section:nth-child(even) .card { background: var(--paper); }
 .info-label {
   display: block; font-family: var(--font-hand); font-size: 22px;
   letter-spacing: 0; text-transform: none; color: var(--accent);
-  margin-bottom: 0.15rem; font-weight: 700;
+  margin-bottom: 0.15rem; font-weight: 400;
 }
 iframe { border: var(--border) !important; border-radius: 0 !important; box-shadow: var(--shadow); }
 
