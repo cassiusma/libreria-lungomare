@@ -23,7 +23,7 @@ img { display: block; width: 100%; object-fit: cover; }
   --shadow:   5px 5px 0 var(--ink);          /* hard "sticker" shadow */
   --shadow-lg: 8px 8px 0 var(--ink);
 
-  --font-display: 'Archivo', system-ui, sans-serif;
+  --font-display: 'Special Elite', cursive;
   --font-body:    'Archivo', system-ui, sans-serif;
   --font-hand:    'Special Elite', cursive;
 
