@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Menu — La Libre · Viareggio</title>
+  <meta name="description" content="Il menu di La Libre: caffetteria, cocktail, vini naturali e snack." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Caveat:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="lalibre.css" />
+  <style>
+    /* ── Menu-specific styles ── */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .menu-block {
+      background: var(--paper);
+      border: var(--border);
+      box-shadow: var(--shadow);
+      padding: 1.8rem 1.6rem 2rem;
+    }
+    .menu-block-yellow {
+      background: var(--marker);
+    }
+    .menu-block h2 {
+      font-size: 22px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      border-bottom: var(--border);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.2rem;
+    }
+    .menu-block h3 {
+      font-family: var(--font-hand);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--accent);
+      margin: 1.2rem 0 0.5rem;
+    }
+    .menu-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.5rem;
+      padding: 0.38rem 0;
+      border-bottom: 1px dashed rgba(22,17,11,0.2);
+    }
+    .menu-row:last-child { border-bottom: none; }
+    .menu-item-name {
+      font-weight: 700;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.01em;
+      color: var(--ink);
+      flex: 1;
+    }
+    .menu-item-note {
+      font-family: var(--font-hand);
+      font-size: 13px;
+      color: var(--ink-mute);
+      font-weight: 500;
+      display: block;
+      margin-top: -2px;
+      text-transform: none;
+      letter-spacing: 0;
+    }
+    .menu-item-price {
+      font-weight: 800;
+      font-size: 14px;
+      color: var(--ink);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .menu-item-price::before { content: "€"; font-size: 11px; vertical-align: super; }
+    .menu-note-row {
+      font-family: var(--font-hand);
+      font-size: 14px;
+      color: var(--ink-mute);
+      padding: 0.25rem 0 0.5rem;
+      font-weight: 500;
+    }
+    .menu-highlight {
+      background: var(--ink);
+      color: var(--paper);
+      padding: 1rem 1.4rem;
+      margin-top: 1.2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: var(--border);
+    }
+    .menu-highlight-label {
+      font-weight: 900;
+      font-size: 15px;
+      text-transform: uppercase;
+      color: var(--marker);
+    }
+    .menu-highlight-sub {
+      font-family: var(--font-hand);
+      font-size: 13px;
+      color: var(--paper-2);
+      display: block;
+    }
+    .menu-highlight-price {
+      font-weight: 900;
+      font-size: 28px;
+      color: var(--marker);
+    }
+    .menu-highlight-price::before { content: "€"; font-size: 16px; vertical-align: super; }
+
+    .menu-footer-note {
+      font-family: var(--font-hand);
+      font-size: 16px;
+      color: var(--ink-soft);
+      text-align: center;
+      margin-top: 1.4rem;
+      padding: 1rem 1.4rem;
+      border: var(--border);
+      background: var(--paper-2);
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 700px) {
+      .menu-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <span class="nav-logo-main">La Libre</span>
+      <span class="nav-logo-sub">Libreria Lungomare</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="books.html" data-it="Libri" data-en="Books">Libri</a></li>
+      <li><a href="wine.html" data-it="Vino" data-en="Wine">Vino</a></li>
+      <li><a href="coffee.html" data-it="Caffè" data-en="Coffee">Caffè</a></li>
+      <li><a href="menu.html" class="active" data-it="Menu" data-en="Menu">Menu</a></li>
+      <li><a href="index.html#visit" data-it="Vieni" data-en="Visit">Vieni</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="nav-lang" id="lang-toggle" title="Switch language">🇬🇧</button>
+      <button class="burger" id="burger-toggle" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="books.html" data-it="Libri" data-en="Books">Libri</a>
+    <a href="wine.html" data-it="Vino" data-en="Wine">Vino</a>
+    <a href="coffee.html" data-it="Caffè" data-en="Coffee">Caffè</a>
+    <a href="menu.html" data-it="Menu" data-en="Menu">Menu</a>
+    <a href="index.html#visit" data-it="Vieni" data-en="Visit">Vieni</a>
+  </div>
+
+  <div class="page-header">
+    <div class="page-header-inner">
+      <div class="eyebrow" data-it="Cosa beviamo" data-en="What we drink">Cosa beviamo</div>
+      <h1 data-it="Il menu" data-en="The menu">Il menu</h1>
+      <div class="divider"></div>
+      <p class="page-intro" data-it="Caffetteria specialty, cocktail artigianali, vini naturali e qualcosa da sgranocchiare." data-en="Specialty coffee, handcrafted cocktails, natural wines and something to nibble on.">
+        Caffetteria specialty, cocktail artigianali, vini naturali e qualcosa da sgranocchiare.
+      </p>
+    </div>
+  </div>
+
+  <div class="list-section">
+    <div class="list-inner">
+
+      <!-- ═══════════════════════════════════════════
+           ROW 1 — CAFFETTERIA + SNACK & SOFT DRINK
+           ═══════════════════════════════════════════ -->
+      <div class="menu-grid">
+
+        <!-- CAFFETTERIA -->
+        <div class="menu-block menu-block-yellow">
+          <h2 data-it="Caffetteria" data-en="Coffee bar">Caffetteria</h2>
+
+          <div class="menu-row">
+            <div class="menu-item-name">
+              Espresso della casa
+              <span class="menu-item-note">Brasile — Catuai Yellow</span>
+            </div>
+            <div class="menu-item-price">1,5</div>
+          </div>
+          <div class="menu-row">
+            <div class="menu-item-name">
+              Espresso Specialty
+              <span class="menu-item-note">Monorigine a rotazione · solo doppia estrazione</span>
+            </div>
+            <div class="menu-item-price">3,5</div>
+          </div>
+          <div class="menu-row">
+            <div class="menu-item-name">
+              Cappuccino Specialty
+              <span class="menu-item-note">Monorigine a rotazione</span>
+            </div>
+            <div class="menu-item-price">4,5</div>
+          </div>
+          <div class="menu-row">
+            <div class="menu-item-name">Macchiato</div>
+            <div class="menu-item-price">1,5</div>
+          </div>
+          <div class="menu-row">
+            <div class="menu-item-name">Cappuccino</div>
+            <div class="menu-item-price">2</div>
+          </div>
+          <div class="menu-row">
+            <div class="menu-item-name">Latte macchiato</div>
+            <div class="menu-item-price">2,5</div>
+          </div>
+          <div class="menu-row">
+            <div class="menu-item-name">Flat white</div>
+            <div class="menu-item-price">4</div>
+          </div>
+          <div class="menu-row">
+            <div class="menu-item-name">Deca Specialty</div>
+            <div class="menu-item-price">2</div>
+          </div>
+          <div class="menu-row">
+            <div class="menu-item-name">Orzo, Ginseng</div>
+            <div class="menu-item-price">2</div>
+          </div>
+          <div class="menu-note-row">Con bevanda vegetale +0,50</div>
+
+          <h3 data-it="Caffè filtro V60" data-en="V60 filter coffee">Caffè filtro V60</h3>
+          <div class="menu-row">
+            <div class="menu-item-name">V60 della casa</div>
+            <div class="menu-item-price">7</div>
+          </div>
+          <div class="menu-row">
+            <div class="menu-item-name">V60 microlotto</div>
+            <div class="menu-item-price">8,5</div>
+          </div>
+
+          <h3>Cold brew</h3>
+          <div class="menu-row">
+            <div class="menu-item-name">
+              Cold brew
+              <span class="menu-item-note">Caffè filtro estratto a freddo</span>
+            </div>
+            <div class="menu-item-price">4,5</div>
+          </div>
+        </div>
+
+        <!-- SNACK + SOFT DRINK -->
+        <div class="menu-block">
+          <h2 data-it="Snack dolci e salati" data-en="Sweet &amp; savoury snacks">Snack dolci e salati</h2>
+
+          <div class="menu-row">
+            <div class="menu-item-name">Muffin al cioccolato</div>
+            <div class="menu-item-price">3,5</div>
+          </div>
+          <div class="menu-row">
+            <div class="menu-item-name">Pain au chocolat</div>
+            <div class="menu-item-price">3</div>
+          </div>
+          <div class="menu-row">
+            <div class="menu-item-name">Cornetto vuoto</div>
+            <div class="menu-item-price">1,5</div>
+          </div>
+          <div class="menu-row">
+            <div class="menu-item-name">Cornetto salato</div>
+            <div class="menu-item-price">3,5</div>
+          </div>
+          <div class="menu-row">
+            <div class="menu-item-name">Sfoglia salata</div>
+            <div class="menu-item-price">2,5</div>
+          </div>
+          <div class="menu-row">
+            <div class="menu-item-name">Sfoglia vegetariana</div>
+            <div class="menu-item-price">2,5</div>
+          </div>
+          <div class="menu-row">
+            <div class="menu-item-name">Pizzetta</div>
+            <div class="menu-item-price">2</div>
+          </div>
+          <div class="menu-row">
+            <div class="menu-item-name">Biscotto al pistacchio</div>
+            <div class="menu-item-price">1,5</div>
+          </div>
+
+          <h3>Soft drink</h3>
+          <div class="menu-row">
+            <div class="menu-item-name">Succhi Plose</div>
+            <div class="menu-item-price">3,5</div>
+          </div>
+          <div class="menu-row">
+            <div class="menu-item-name">Tè freddo</div>
+            <div class="menu-item-price">3,5</div>
+          </div>
+          <div class="menu-row">
+            <div class="menu-item-name">Mole Cola</div>
+            <div class="menu-item-price">3,5</div>
+          </div>
+          <div class="menu-row">
+            <div class="menu-item-name">Cedrata Tassoni</div>
+            <div class="menu-item-price">3</div>
+          </div>
+          <div class="menu-row">
+            <div class="menu-item-name">Spuma Paoletti</div>
+            <div class="menu-item-price">3</div>
+          </div>
+          <div class="menu-row">
+            <div class="menu-item-name">Soda al pompelmo</div>
+            <div class="menu-item-price">3,5</div>
+          </div>
+          <div class="menu-row">
+            <div class="menu-item-name">Chinotto</div>
+            <div class="menu-item-price">3</div>
+          </div>
+          <div class="menu-row">
+            <div class="menu-item-name">Aranciata</div>
+            <div class="menu-item-price">3</div>
+          </div>
+          <div class="menu-row">
+            <div class="menu-item-name">Uop Water</div>
+            <div class="menu-item-price">3</div>
+          </div>
+        </div>
+
+      </div><!-- /menu-grid row 1 -->
+
+
+      <!-- ═══════════════════════════════════════════
+           ROW 2 — COCKTAIL + GIN / VODKA / BIRRE
+           ═══════════════════════════════════════════ -->
+      <div class="menu-grid" style="margin-top:2rem;">
+
+        <!-- COCKTAIL + NO ALCOL + SPRITZ -->
+        <div class="menu-block">
+          <h2 data-it="Cocktail" data-en="Cocktails">Cocktail</h2>
+          <div class="menu-note-row">Classici 6 euro</div>
+
+          <div class="menu-row">
+            <div class="menu-item-name">
+              Palombaro
+              <span class="menu-item-note">Bitter, tequila, agave, pompelmo e tonica</span>
+            </div>
+            <div class="menu-item-price">7</div>
+          </div>
+          <div class="menu-row">
+            <div class="menu-item-name">
+              Basito
+              <span class="menu-item-note">Gin al basilico, cedrata Tassoni e lime</span>
+            </div>
+            <div class="menu-item-price">8</div>
+          </div>
+          <div class="menu-row">
+            <div class="menu-item-name">
+              Filter Martini
+              <span class="menu-item-note">Specialty coffee, vodka, sciroppo agave</span>
+            </div>
+            <div class="menu-item-price">9</div>
+          </div>
+          <div class="menu-row">
+            <div class="menu-item-name">
+              Wekito
+              <span class="menu-item-note">Ghiaccio al rum, cordiale alla menta, lime, soda</span>
+            </div>
+            <div class="menu-item-price">8</div>
+          </div>
+          <div class="menu-row">
+            <div class="menu-item-name">
+              Macondo
+              <span class="menu-item-note">Bitter bianco, vermouth alla banana e vodka</span>
+            </div>
+            <div class="menu-item-price">9</div>
+          </div>
+          <div class="menu-row">
+            <div class="menu-item-name">
+              Fruittella
+              <span class="menu-item-note">Fino sherry, purea di frutta e rhum Flor de Cana</span>
+            </div>
+            <div class="menu-item-price">8</div>
+          </div>
+          <div class="menu-row">
+            <div class="menu-item-name">
+              Fernandito
+              <span class="menu-item-note">Fernet Branca e Mole Cola</span>
+            </div>
+            <div class="menu-item-price">7</div>
+          </div>
+
+          <h3 data-it="No alcol" data-en="No alcohol">No alcol</h3>
+          <div class="menu-row">
+            <div class="menu-item-name">Gino Tonico</div>
+            <div class="menu-item-price">7</div>
+          </div>
+          <div class="menu-row">
+            <div class="menu-item-name">London Null</div>
+            <div class="menu-item-price">7</div>
+          </div>
+          <div class="menu-row">
+            <div class="menu-item-name">N"O"groni</div>
+            <div class="menu-item-price">8</div>
+          </div>
+          <div class="menu-row">
+            <div class="menu-item-name">
+              LL68
+              <span class="menu-item-note">Analcolico alla frutta</span>
+            </div>
+            <div class="menu-item-price">7</div>
+          </div>
+
+          <h3>Spritz</h3>
+          <div class="menu-row">
+            <div class="menu-item-name">Aperitivo</div>
+            <div class="menu-item-price">6</div>
+          </div>
+          <div class="menu-row">
+            <div class="menu-item-name">Rosé</div>
+            <div class="menu-item-price">7</div>
+          </div>
+          <div class="menu-row">
+            <div class="menu-item-name">Sambuco</div>
+            <div class="menu-item-price">7</div>
+          </div>
+          <div class="menu-row">
+            <div class="menu-item-name">Limoncello</div>
+            <div class="menu-item-price">7</div>
+          </div>
+          <div class="menu-row">
+            <div class="menu-item-name">Mirtillo</div>
+            <div class="menu-item-price">7</div>
+          </div>
+          <div class="menu-row">
+            <div class="menu-item-name">Bitter</div>
+            <div class="menu-item-price">6</div>
+          </div>
+          <div class="menu-row">
+            <div class="menu-item-name">Cynar</div>
+            <div class="menu-item-price">7</div>
+          </div>
+          <div class="menu-row">
+            <div class="menu-item-name">Select</div>
+            <div class="menu-item-price">7</div>
+          </div>
+        </div>
+
+        <!-- GIN + VODKA + BIRRE + VINI -->
+        <div class="menu-block menu-block-yellow">
+          <h2 data-it="Gin" data-en="Gin">Gin</h2>
+          <div class="menu-note-row">Selezione di gin artigianali ecofriendly</div>
+          <div class="menu-row">
+            <div class="menu-item-name">Peter in Florence</div>
+            <div class="menu-item-price">10</div>
+          </div>
+          <div class="menu-row">
+            <div class="menu-item-name">Visionair</div>
+            <div class="menu-item-price">11</div>
+          </div>
+          <div class="menu-row">
+            <div class="menu-item-name">Opificio</div>
+            <div class="menu-item-price">8</div>
+          </div>
+
+          <h3 data-it="Vodka" data-en="Vodka">Vodka</h3>
+          <div class="menu-note-row">Selezione di vodka artigianali ecofriendly</div>
+          <div class="menu-row">
+            <div class="menu-item-name">Blu Lie</div>
+            <div class="menu-item-price">9</div>
+          </div>
+          <div class="menu-row">
+            <div class="menu-item-name">Qui si vola</div>
+            <div class="menu-item-price">7</div>
+          </div>
+
+          <h3 data-it="Birre" data-en="Beers">Birre</h3>
+
+          <div class="menu-note-row">Alla spina</div>
+          <div class="menu-row">
+            <div class="menu-item-name">Poretti Tre Luppoli</div>
+            <div class="menu-item-price">6</div>
+          </div>
+          <div class="menu-row">
+            <div class="menu-item-name">Quella del mese</div>
+            <div class="menu-item-price">7</div>
+          </div>
+
+          <div class="menu-note-row">Dal frigo</div>
+          <div class="menu-row">
+            <div class="menu-item-name">Senza glutine</div>
+            <div class="menu-item-price">7</div>
+          </div>
+          <div class="menu-row">
+            <div class="menu-item-name">Analcolica</div>
+            <div class="menu-item-price">7</div>
+          </div>
+          <div class="menu-row">
+            <div class="menu-item-name">IPA</div>
+            <div class="menu-item-price">7</div>
+          </div>
+          <div class="menu-row">
+            <div class="menu-item-name">Lager</div>
+            <div class="menu-item-price">6</div>
+          </div>
+
+          <h3 data-it="Vini e bolle naturali" data-en="Natural wines &amp; bubbles">Vini e bolle naturali</h3>
+          <div class="menu-row">
+            <div class="menu-item-name">Calice</div>
+            <div class="menu-item-price">6/7</div>
+          </div>
+          <div class="menu-row">
+            <div class="menu-item-name">Bottiglia</div>
+            <div class="menu-item-price">18/30</div>
+          </div>
+
+          <!-- Piatto aperitivo highlight -->
+          <div class="menu-highlight">
+            <div>
+              <div class="menu-highlight-label" data-it="Piatto aperitivo" data-en="Aperitivo platter">Piatto aperitivo</div>
+              <span class="menu-highlight-sub" data-it="per due persone" data-en="for two">per due persone</span>
+            </div>
+            <div class="menu-highlight-price">12</div>
+          </div>
+
+        </div>
+
+      </div><!-- /menu-grid row 2 -->
+
+      <p class="menu-footer-note">
+        We work directly with roasters to bring only the finest beans to your cup.<br>
+        Serious about coffee. Relaxed about everything else.
+      </p>
+
+    </div><!-- /list-inner -->
+  </div><!-- /list-section -->
+
+  <footer>
+    <div class="footer-logo">La Libre</div>
+    <div class="footer-sub">Libreria Lungomare · Viareggio</div>
+    <div class="footer-social">
+      <a href="https://www.instagram.com/CIVAI_ALLA_LIBRE" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </a>
+      <a href="https://www.facebook.com/Civaicaffe/?locale=it_IT" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </a>
+      <a href="https://www.google.com/searchviewer/10?svid=CAwSHRIbCgNwdnESFENnMHZaeTh4TVdaek5qWjZNMjVuGAo" target="_blank" rel="noopener" aria-label="Google">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+      </a>
+    </div>
+    <p>© 2026 · Libri · Vino · Caffè</p>
+  </footer>
+
+  <script src="products.js"></script>
+  <script src="site.js"></script>
+  <script>
+    const lang = LaLibreSite.getLang();
+    LaLibreSite.applyTranslations(lang);
+    LaLibreSite.rewriteInternalLinks(lang);
+  </script>
+</body>
+</html>
